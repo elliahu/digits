@@ -24,7 +24,7 @@ trainset = datasets.MNIST('data_train', download=True, train=True, transform=tra
 valset = datasets.MNIST('data_val', download=True, train=False, transform=transform)
 
 trainloader = torch.utils.data.DataLoader(trainset, batch_size=BATCH_SIZE, shuffle=True)
-#valloader = torch.utils.data.DataLoader(valset, batch_size=1000, shuffle=True)
+valloader = torch.utils.data.DataLoader(valset, batch_size=1000, shuffle=True)
 
 
 # Exploratory analysis
@@ -43,9 +43,9 @@ MODEL_PATH = './model.pt'
 
 model = Model(INPUT_SIZE,HIDDEN_SIZE,OUTPUT_SIZE, trainloader)
 
-while True:
+""" while True:
     drawable = Drawable(28, 28, 15, 'black', 'white', brush_size=10)
     drawable.start()
-    model.eval_single(drawable.create_tensor(28,28))
+    model.eval_single(drawable.create_tensor(28,28)) """
 
-#model.evaluate(valloader, BATCH_SIZE)
+model.evaluate(valloader, BATCH_SIZE)
